@@ -1,26 +1,39 @@
-Engineering materials
-====
+# 🚀 Autonomous Robot Project - WRO Future Engineers
 
-This repository contains engineering materials of a self-driven vehicle's model participating in the WRO Future Engineers competition in the season 2022.
+## 🎯 Project Objective
+This project aims to build and program an autonomous robot using open-source hardware. The robot is designed to assess its environment using sensors and computer vision, enabling efficient navigation and challenge resolution along a predetermined path. Through planning, sensor integration, and optimal control strategies, the team seeks to improve its problem-solving, teamwork, and engineering development capabilities.
 
-## Content
+## 🔧 Components Used
+Our robot is equipped with the following components:
+- **Arduino board** – Main microcontroller to manage the sensors and motor control.
+- **NXT motor** – Provides propulsion and movement control.
+- **H-bridge** – Controls the direction and speed of the motor.
+- **Ultrasonic sensors (x2)** – Detects obstacles and assists in navigation.
+- **ESP32 with integrated camera** – Used for computer vision and trajectory analysis.
+- **VL53L0X distance sensor** – Measures precise distances for obstacle avoidance.
+- **Protoboard** – Used for wiring and connecting electronic components.
 
-* `t-photos` contains 2 photos of the team (an official one and one funny photo with all team members)
-* `v-photos` contains 6 photos of the vehicle (from every side, from top and bottom)
-* `video` contains the video.md file with the link to a video where driving demonstration exists
-* `schemes` contains one or several schematic diagrams in form of JPEG, PNG or PDF of the electromechanical components illustrating all the elements (electronic components and motors) used in the vehicle and how they connect to each other.
-* `src` contains code of control software for all components which were programmed to participate in the competition
-* `models` is for the files for models used by 3D printers, laser cutting machines and CNC machines to produce the vehicle elements. If there is nothing to add to this location, the directory can be removed.
-* `other` is for other files which can be used to understand how to prepare the vehicle for the competition. It may include documentation how to connect to a SBC/SBM and upload files there, datasets, hardware specifications, communication protocols descriptions etc. If there is nothing to add to this location, the directory can be removed.
+## 💻 Required Software
+To compile and upload the code to the robot, you need:
+- **Arduino IDE**: Development software for programming the Arduino board.
+- **Necessary Libraries**:
+- Libraries for the ultrasonic sensors.
+- Libraries specific to the ESP32 camera.
 
-## Introduction
+## 🔌 Installation and Runtime Instructions
+1. Download and install **Arduino IDE** from [arduino.cc](https://www.arduino.cc/).
+2. Connect the Arduino board to the computer using a **USB cable**.
+3. Install the necessary libraries in the Arduino IDE:
+- Open **Arduino IDE**.
+- Go to **Library Manager** and search for the corresponding libraries.
+- Install the libraries and ensure they are loaded correctly.
+4. Upload the source code to the Arduino board:
+- Open the `.ino` file within the Arduino IDE.
+- Select the correct port where the board is connected.
+- Compile and upload the code to the board.
+5. Verify the robot's functionality in walk tests.
 
-_This part must be filled by participants with the technical clarifications about the code: which modules the code consists of, how they are related to the electromechanical components of the vehicle, and what is the process to build/compile/upload the code to the vehicle’s controllers._
-
-## How to prepare the repo based on the template
-
-_Remove this section before the first commit to the repository_
-
-1. Clone this repo by using the `git clone` functionality.
-2. Remove `.git` directory
-3. [Initialize a new public repository on GitHub](https://github.com/new) by following instructions from "create a new repository on the command line" section (appeared after pressing "Create repository" button).
+## 📜 Documentation and Development
+- The project's source code is located in this repository and is documented with explanatory comments.
+- Images of the robot from different angles and photos of the participating team are included.
+- The robot will be tested in different scenarios to validate its accuracy and stability in solving missions.
