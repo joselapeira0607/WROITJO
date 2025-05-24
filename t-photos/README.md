@@ -1,4 +1,7 @@
 Team's photos
 ====
 
-This directory must contain 2 photos of the team (an official one and one funny photo with all team members)
+Official:
+![imagen](https://github.com/user-attachments/assets/29140a27-f250-48fd-9b15-9bf6b1b95659)
+
+Funny photo:
