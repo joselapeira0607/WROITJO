@@ -1,0 +1,138 @@
+#include <Servo.h>   // Incluye la librería Servo para el control del motor servo
+#define motorPin1 3  //MOTOR
+#define motorPin2 6
+#define dMin 45   //DISTANCIA MINIMA
+#define dFMax 40  //DISTANCIA MAXIMA
+#define umbral 25
+
+// --- CONFIGURACIÓN DEL SERVO ---
+Servo myServo;           // Crea un objeto servo
+const int servoPin = 9;  // Pin digital donde el cable de señal del servo está conectado (ej. Pin 9 de Arduino)
+
+// --- VARIABLES DE COMUNICACIÓN SERIAL ---
+String receivedData = "";  // Buffer para almacenar los datos seriales entrantes del ESP32
+bool newData = false;      // Bandera para indicar cuando ha llegado un mensaje completo (terminado por '\n')
+
+// --- VARIABLES PARA LOS VALORES DE LOS SENSORES ---
+int valorSensor1 = 0;  // Variable para almacenar el valor del Sensor 1
+int valorSensor2 = 0;  // Variable para almacenar el valor del Sensor 2
+
+bool loopactivo = true;
+
+void setup() {
+  Serial.begin(9600);
+  Serial.println("Arduino: Listo para recibir comandos de servo desde ESP32.");
+  pinMode(motorPin1, OUTPUT);
+  pinMode(motorPin2, OUTPUT);
+  // --- Configuración del Servo ---
+  myServo.attach(servoPin);  // Asocia el objeto servo al pin configurado
+  myServo.write(90);         // Mueve el servo a la posición central (90 grados) al inicio
+}
+
+// --- FUNCIONES PARA EL MANEJO DE LA COMUNICACIÓN SERIAL ---
+
+void recvSerialData() {
+  while (Serial.available() > 0) {      // Mientras haya bytes disponibles para leer
+    char receivedChar = Serial.read();  // Lee un carácter
+    receivedData += receivedChar;       // Lo añade al buffer de la cadena
+    if (receivedChar == '\n') {         // Comprueba si es el terminador de nueva línea
+      newData = true;                   // Ha llegado un mensaje completo
+    }
+  }
+}
+void avanzar() {
+  digitalWrite(motorPin1, HIGH);
+  digitalWrite(motorPin2, LOW);
+}
+void detener() {
+  digitalWrite(motorPin1, LOW);
+  digitalWrite(motorPin2, LOW);
+}
+
+void processSerialCommand() {
+  // --- Procesar mensaje del Sensor 1 ---
+  if (receivedData.startsWith("S1:")) {
+    // Encuentra la posición de " mm" y extrae el número antes de él
+    int mmIndex = receivedData.indexOf(" mm");
+    if (mmIndex != -1) {  // Asegura que " mm" fue encontrado
+      // El número comienza después de los dos puntos y un espacio, y termina antes de " mm"
+      int startIndex = receivedData.indexOf(":") + 2;  // +2 para saltar ": "
+      String valueString = receivedData.substring(startIndex, mmIndex);
+      valorSensor1 = valueString.toInt();  // Convierte a entero y almacena
+      // * CAMBIO AQUÍ: Mensaje de confirmación sin "mm" *
+      Serial.print("Arduino: Sensor 1 almacenado: ");
+      Serial.println(valorSensor1);
+    }
+  }
+  // --- Procesar mensaje del Sensor 2 ---
+  else if (receivedData.startsWith("S2:")) {
+    // Encuentra la posición de " mm" y extrae el número antes de él
+    int mmIndex = receivedData.indexOf(" mm");
+    if (mmIndex != -1) {  // Asegura que " mm" fue encontrado
+      // El número comienza después de los dos puntos y un espacio, y termina antes de " mm"
+      int startIndex = receivedData.indexOf(":") + 2;  // +2 para saltar ": "
+      String valueString = receivedData.substring(startIndex, mmIndex);
+      valorSensor2 = valueString.toInt();  // Convierte a entero y almacena
+      // * CAMBIO AQUÍ: Mensaje de confirmación sin "mm" *
+      Serial.print("Arduino: Sensor 2 almacenado: ");
+      Serial.println(valorSensor2);
+    }
+  }
+}
+
+void loop() {
+  int i = 0;
+  int state = 0;
+  avanzar();
+  do {
+    recvSerialData();  // Recibe datos seriales
+    if (newData == true) {
+      processSerialCommand();  // Procesa el comando
+      receivedData = "";       // Limpia el buffer para el siguiente mensaje
+      newData = false;         // Reinicia la bandera
+    }
+    //----------------------------------------------------
+    if (valorSensor2 < valorSensor1 - umbral) {
+      // Solo mueve el servo si el estado es diferente al actual
+      if (state != 1) {     // Si el estado actual NO es 1
+        myServo.write(10);  // Mueve el servo a 20 grados
+        state = 1;          // Actualiza el estado a 1
+        delay(1000);
+                            // i++; // Si aún necesitas incrementar 'i', puedes mantenerlo aquí
+      }
+      // Si state ya es 1, no hace nada, el servo se mantiene en 20 grados
+    }
+    else if (valorSensor1 < valorSensor2 - umbral) {
+      // Solo mueve el servo si el estado es diferente al actual
+      if (state != 2) {      // Si el estado actual NO es 2
+        myServo.write(170);  // Mueve el servo a 140 grados
+        state = 2;           // Actualiza el estado a 2
+        delay(1000);
+
+      }
+      // Si state ya es 2, no hace nada, el servo se mantiene en 140 grados
+    }
+    // Avanza de forma lineal
+    else {
+      if (state != 0) {     // Si el estado actual NO es 0
+        myServo.write(90);  // Mueve el servo a 90 grados
+        state = 0;          // Actualiza el estado a 0
+        delay(1000);
+
+      }
+      // Si state ya es 0, no hace nada, el servo se mantiene en 90 grados
+    }
+  } while (i < 12);
+
+
+
+
+
+  // Ahora puedes usar 'valorSensor1' y 'valorSensor2' en cualquier parte de tu loop
+  // Por ejemplo, para imprimirlos y verificar:
+  // Serial.print("Sensor 1 actual: ");
+  // Serial.println(valorSensor1);
+  // Serial.print("Sensor 2 actual: ");
+  // Serial.println(valorSensor2);
+  // delay(500); // Pequeño retraso para evitar inundar la salida serial
+}
