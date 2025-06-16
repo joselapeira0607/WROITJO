@@ -12,7 +12,7 @@ Primary Objectives:
 
 
 ## 🔹 Who We Are
-We are a team from Instituto Técnico Jesús Obrero (ITJO) passionate about robotics and automation.
+We are a team from Instituto Técnico Jesús Obrero (ITJO) in Venezuela, passionate about robotics and automation.
 Team Members:
 - José Lapeira – Expert in embedded programming, electronic systems, and software development.
 - Keiner Duran – Specializes in algorithm optimization, robotics AI integration, and movement logic design.
@@ -35,6 +35,13 @@ The VL53L0X sensor plays a crucial role in obstacle detection, allowing the robo
 - Obstacle Detection: The distance sensor identifies objects and dynamically adjusts the robot’s path.
 - ESP32-Based Camera Input: Processes real-time images for terrain analysis and movement decisions.
 - Motor Control Logic: The Arduino Uno manages speed control using PWM signals and servo adjustments.
+
+
+## Measure
+- _Width: 16 centimeters._
+- _Length: 26 centimeters_
+- _Height:_ 
+- _Weight:_
 
 
 ## 💻 Required Software & Development Tools
