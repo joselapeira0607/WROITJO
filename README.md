@@ -38,10 +38,12 @@ The VL53L0X sensor plays a crucial role in obstacle detection, allowing the robo
 
 
 ## 💻 Required Software & Development Tools
+
 Programming & Compilation Tools:
 - Arduino IDE – Used for coding, compiling, and uploading firmware.
 - PlatformIO – Enables advanced debugging and sensor data analysis.
 - Python (OpenCV) – Optimizes image processing and tracking behavior.
+
 Essential Libraries:
 - Wire.h – Supports sensor communication and data collection.
 - Adafruit_VL53L0X.h – Controls distance measurement operations.
