@@ -33,7 +33,7 @@ The VL53L0X sensor plays a crucial role in obstacle detection, allowing the robo
 - **ESP32-Based Camera Input:** Processes real-time images for terrain analysis and movement decisions.
 - **Motor Control Logic:** The Arduino Uno manages speed control using PWM signals and servo adjustments.
 
-## 📏 Measure
+## 📏 Measurements
 - **Width:** _18 centimeters_
 - **Length:** _26 centimeters_
 
