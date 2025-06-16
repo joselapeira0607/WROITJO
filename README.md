@@ -1,7 +1,7 @@
 ## 🔹 Who We Are
 We are a dedicated team representing Instituto Técnico Jesús Obrero, driven by a shared passion for technology and robotics. Our team members include:
 - José Lapeira – Graduated in Informatics from the same institute, with extensive experience in programming across multiple languages.
-- Keener Duran – Holds the same expertise as José in programming and software development.
+- Keiner Duran – Holds the same expertise as José in programming and software development.
 - Mauricio Sánchez – Graduated in Electronics from the institute and obtained a TSU in Informatics, with hands-on experience in Arduino programming and implementation.
 
 ## 🎯 Project Objective
