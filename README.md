@@ -46,6 +46,7 @@ The VL53L0X sensor plays a crucial role in obstacle detection, allowing the robo
 
 Programming & Compilation Tools:
 - Arduino IDE – Used for coding, compiling, and uploading firmware.
+- Tinkercad - 
 
 Essential Libraries:
 - Wire.h – Supports sensor communication and data collection.
