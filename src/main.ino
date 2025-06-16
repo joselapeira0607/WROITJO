@@ -3,7 +3,7 @@
 #define motorPin2 6 // MOTOR PORT 2
 #define dMin 45 // MINIMUM DISTANCE
 #define dFMax 40 // MAXIMUM DISTANCE
-#define threshold 25 // Threshold
+#define threshold 25 // THRESHOLD
 
 // --- SERVO CONFIGURATION ---
 Servo myServo; // Create a servo object
