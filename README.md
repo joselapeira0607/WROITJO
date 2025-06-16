@@ -35,8 +35,6 @@ Robot Dimensions & Design Considerations:
 - Width: 16 cm
 - Length: 26 cm
 - Height: 12 cm
-- Weight: 1.2 kg (optimized for agility and performance)
-- Frame Material: Lightweight aluminum and high-strength polymer components
 
 
 ## 💻 Required Software & Development Tools
