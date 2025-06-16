@@ -38,7 +38,7 @@ The VL53L0X sensor plays a crucial role in obstacle detection, allowing the robo
 
 
 ## Measure
-- _Width: 16 centimeters._
+- _Width: 18 centimeters._
 - _Length: 26 centimeters_
 
 
