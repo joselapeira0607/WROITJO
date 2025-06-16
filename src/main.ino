@@ -1,9 +1,9 @@
 #include <Servo.h> // Includes the Servo library for servo motor control
-#define motorPin1 3 // MOTOR
-#define motorPin2 6
+#define motorPin1 3 // MOTOR PORT 1
+#define motorPin2 6 // MOTOR PORT 2
 #define dMin 45 // MINIMUM DISTANCE
 #define dFMax 40 // MAXIMUM DISTANCE
-#define threshold 25
+#define threshold 25 // Threshold
 
 // --- SERVO CONFIGURATION ---
 Servo myServo; // Create a servo object
