@@ -1,9 +1,9 @@
-##Proyecto de robot autónomo para la WRO - Categoría Futuros Ingenieros
-##Objetivo del proyecto
+## Proyecto de robot autónomo para la WRO - Categoría Futuros Ingenieros
+## Objetivo del proyecto
 El objetivo de este proyecto es diseñar, construir y programar un robot autónomo utilizando hardware de código abierto, toma de decisiones basada en sensores y algoritmos de movimiento adaptativos. Nuestro robot analiza dinámicamente su entorno mediante procesamiento integrado y retroalimentación de sensores, garantizando una navegación eficiente mientras supera obstáculos de forma autónoma.
 
 Objetivos principales:
-*Reforzar la resolución de problemas y el trabajo en equipo en la ingeniería del mundo real.
+* Reforzar la resolución de problemas y el trabajo en equipo en la ingeniería del mundo real.
 *Aplicar el control de movimiento basado en sensores para una navegación precisa.
 *Desarrollar una estrategia de conducción autónoma optimizada para retos de robótica.
 *Contribuir a la robótica de código abierto documentando nuestra solución para futuros equipos.
