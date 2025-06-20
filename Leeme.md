@@ -36,9 +36,9 @@ El sensor VL53L0X desempeña un papel crucial en la detección de obstáculos, p
 * Lógica de control del motor: El Arduino Uno gestiona el control de velocidad mediante señales PWM y ajustes de servo.
 
 ## Medidas
-Anchura: 15 centímetros
-Longitud: 27 centímetros
-Altura: 
+* Anchura: 15 centímetros
+* Longitud: 27 centímetros
+* Altura: 
 
 ## Software y herramientas de desarrollo necesarios
 Herramientas de programación y compilación:
