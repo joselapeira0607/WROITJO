@@ -34,8 +34,9 @@ The VL53L0X sensor plays a crucial role in obstacle detection, allowing the robo
 - **Motor Control Logic:** The Arduino Uno manages speed control using PWM signals and servo adjustments.
 
 ## 📏 Measurements
-- **Width:** _18 centimeters_
-- **Length:** _26 centimeters_
+- **Width:** _15 centimeters_
+- **Length:** _27 centimeters_
+- **height** _
 
 ## 💻 Required Software & Development Tools
 Programming & Compilation Tools:
