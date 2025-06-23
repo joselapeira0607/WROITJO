@@ -35,14 +35,6 @@ Objetivos principales:
 * Desarrollar una estrategia de conducción autónoma optimizada para retos de robótica.
 * Contribuir a la robótica de código abierto documentando nuestra solución para futuros equipos.
 
-## Quiénes somos
-Somos un equipo del Instituto Técnico Jesús Obrero (ITJO) de Venezuela, apasionados por la robótica y la automatización.
-Miembros del equipo:
-
-* José Lapeira - Experto en programación, sistemas electrónicos y desarrollo de software.
-* Keiner Duran - Especializado en optimización de algoritmos, integración de IA robótica y diseño de lógica de movimiento.
-* Mauricio Sánchez - especializado en firmware Arduino, control de motores y aplicaciones electrónicas.
-
 ## Componentes Utilizados
 
 Nuestro robot está construido con hardware de precisión para garantizar estabilidad, capacidad de respuesta y optimización energética.
