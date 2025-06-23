@@ -35,14 +35,6 @@ Main objectives:
 * Develop an optimized autonomous driving strategy for robotics challenges
 * Contribute to open-source robotics by documenting our solution for future teams
 
-## Our Team
-We are a team from Instituto Técnico Jesús Obrero (ITJO) in Venezuela, passionate about robotics and automation.
-Team members:
-
-* José Lapeira - Expert in programming, electronic systems, and software development
-* Keiner Duran - Specialized in algorithm optimization, robotic AI integration, and motion logic design
-* Mauricio Sánchez - Specialized in Arduino firmware, motor control, and electronic applications
-
 ## Components Used
 
 Our robot is built with precision hardware to ensure stability, responsiveness, and energy optimization.
