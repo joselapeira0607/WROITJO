@@ -1,79 +1,176 @@
-## 🚀 Autonomous Robot Project for WRO – Future Engineers Category
+<h1 align="center"> Autonomous Robot Project for WRO - Future Engineers Category </h1>
 
-## 🎯 Project Objective
-The goal of this project is to design, build, and program an autonomous robot using open-source hardware, sensor-driven decision-making, and adaptive movement algorithms. Our robot dynamically analyzes its environment through embedded processing and sensor feedback, ensuring efficient navigation while overcoming obstacles autonomously.
+<p align="center"> <img src="https://github.com/DexterTaha/WRO-2024-FUTURE-ENGINEERS/assets/130682580/d9385136-f971-4c95-ba80-ffc14f7c0a4e" alt="banner" width="1500"> </p>
 
-Primary Objectives:
-- Strengthen problem-solving and teamwork in real-world engineering.
-- Apply sensor-based movement control for precise navigation.
-- Develop an optimized, autonomous driving strategy for robotics challenges.
-- Contribute to open-source robotics by documenting our solution for future teams.
+<br>
+<h1 align="center"> World Robot Olympiad </h1>
 
-## 🔹 Who We Are
-We are a team from Instituto Técnico Jesús Obrero (ITJO) in Venezuela, passionate about robotics and automation.  
-Team Members:
-- **José Lapeira** – Expert in embedded programming, electronic systems, and software development.
-- **Keiner Duran** – Specializes in algorithm optimization, robotics AI integration, and movement logic design.
-- **Mauricio Sánchez** – Focused on Arduino firmware, motor control, and electronics applications.
+<p align="center"> <img src="https://www.wroguatemala.org/wp-content/uploads/2023/07/Sticker_100x1006.png" width="300"> </p>
+<br>
 
-## 🔧 Components Used
-Our robot is built using precision hardware to ensure stability, responsiveness, and automation.  
-Key Electronics & Hardware:
-- **Arduino Uno** – Main microcontroller handling sensor input and motion control.
-- **NXT Motor & H-Bridge** – Provides precise movement and speed adjustments.
-- **ESP32 with Integrated Camera** – Enables real-time object detection and navigation algorithms.
-- **VL53L0X Distance Sensor** – Supports high-accuracy obstacle detection and movement corrections.
-- **Protoboard & Wiring System** – Ensures structured electrical connections and component stability.
-- **Voltage Regulators** – Maintain consistent power distribution across the robot’s systems.
-- **Servo Motor** – Provides additional motion control and interactive functionalities.
+The World Robot Olympiad (WRO) is a prestigious international robotics competition that stimulates the imagination of students worldwide. It challenges participants to demonstrate their creativity, problem-solving skills, and technical expertise in designing and programming robots for various tasks and challenges.
 
-## 📡 Sensor Processing and Autonomous Navigation
-The VL53L0X sensor plays a crucial role in obstacle detection, allowing the robot to measure distance in real time and adjust its movement accordingly. The robot follows a sensor-driven movement algorithm, continuously refining its motor speed and navigation logic.  
-- **Obstacle Detection:** The distance sensor identifies objects and dynamically adjusts the robot’s path.
-- **ESP32-Based Camera Input:** Processes real-time images for terrain analysis and movement decisions.
-- **Motor Control Logic:** The Arduino Uno manages speed control using PWM signals and servo adjustments.
+One of the most dynamic categories in WRO is Future Engineers. In this category, participants are tasked with developing innovative solutions to real-world problems using robotics and automation. This category serves as a breeding ground for future innovators, encouraging critical and creative thinking among students, laying the foundation for a new generation of engineers and technologists.
 
-## 📏 Measurements
-- **Width:** _15 centimeters_
-- **Length:** _27 centimeters_
-- **height** _
+This year, the Future Engineers category presents an exciting challenge: creating an autonomous car. This challenge pushes participants to explore cutting-edge robotics, adding complexity and innovation to an already thrilling competition.
 
-## 💻 Required Software & Development Tools
-Programming & Compilation Tools:
-- **Arduino IDE** – Used for coding, compiling, and uploading firmware.
-- **Tinkercad** – Virtual electronics simulation tool for prototyping circuits.
+# 📁 Repository Structure
 
-Essential Libraries:
-- **Wire.h** – Supports sensor communication and data collection.
-- **Adafruit_VL53L0X.h** – Controls distance measurement operations.
-- **Servo.h** – Manages servo motor positioning and control feedback.
+| Directory      | Type       | Description | Required |
+|----------------|------------|-------------|-----------|
+| **/t-photos**  | 📸 Photos   | - 1 official team photo (`team_official.jpg`)<br>- 1 informal group photo (`team_fun.jpg`) | ✅ Required |
+| **/v-photos**  | 🖼️ Photos  | - 6 technical views of the robot (front, side, rear, top, bottom, detail)<br>- Minimum resolution: 1920x1080<br>- Format: `robot_[angle].jpg` | ✅ Required |
+| **/video**     | 🎥 Multimedia | `video.md` file containing:<br>- YouTube link (public/unlisted)<br>- Minimum 30-second demonstration<br>- Must show autonomous navigation | ✅ Required |
+| **/schemes**   | 📐 Diagrams | Diagrams in JPEG/PNG/PDF of:<br>- Electronic schematic<br>- Wiring connections<br>- Mechanical layout | ✅ Required |
+| **/src**       | 💻 Code  | Recommended structure:<br>- `/firmware` (Arduino/ESP32 code)<br>- `/vision` (image processing)<br>- `/docs` (technical manuals) | ✅ Required |
+| **/models**    | 🖨️ 3D/CNC | Optional files:<br>- Formats: STL, DXF, STEP<br>- Organized by component | ❌ Optional |
+| **/other**     | 📄 Extra   | Additional documentation:<br>- Communication protocols<br>- Technical specifications<br>- Calibration guides | ❌ Optional |
 
-## 🔌 Installation and Runtime Instructions
-### How to Deploy the Robot's Firmware:
-1. Download Arduino IDE and install all required board drivers.
-2. Connect the Arduino Uno via USB and ensure proper recognition in the IDE.
-3. Install all necessary libraries (VL53L0X, Servo, Wire, Adafruit Motor Control).
-4. Compile and upload the firmware, initializing sensor-driven movement algorithms.
-5. Test distance sensor performance using Serial Monitor readings.
-6. Run autonomous navigation trials and fine-tune movement responses.
+## Project Objective
+The objective of this project is to design, build, and program an autonomous robot using open-source hardware, sensor-based decision making, and adaptive movement algorithms. Our robot dynamically analyzes its environment through integrated processing and sensor feedback, ensuring efficient navigation while autonomously overcoming obstacles.
 
-## 🏆 Testing & Evaluation
-### Performance Validation Tests:
-- **Sensor Precision Test:** Confirms reliable obstacle detection and distance accuracy.
-- **Motor Speed Calibration:** Ensures smooth movement transitions and speed adjustments.
-- **Servo Motor Alignment:** Evaluates reaction time and angle precision for additional motion handling.
-- **Camera-Based Navigation:** Assesses real-time terrain recognition and edge detection capabilities.
+Main objectives:
+* Strengthen problem-solving and teamwork in real-world engineering
+* Implement sensor-based motion control for precise navigation
+* Develop an optimized autonomous driving strategy for robotics challenges
+* Contribute to open-source robotics by documenting our solution for future teams
 
-### ⚙ Competitive Strategy and Adaptability
-Our robot is designed to react dynamically in competition settings, ensuring maximum precision and adaptability:
-- **Real-Time Sensor Feedback:** The robot adjusts movement instantly based on incoming distance measurements.
-- **Vision-Based Edge Detection:** The ESP32 processes camera input, determining safe paths and barrier avoidance.
-- **Energy-Efficient Motion Handling:** Reduces excess movement waste for optimized navigation cycles.
-- **Configurable Control Logic:** Adjusts servo responsiveness and motor calibration as needed.
+## Our Team
+We are a team from Instituto Técnico Jesús Obrero (ITJO) in Venezuela, passionate about robotics and automation.
+Team members:
 
-### 🚀 Future Development & Contribution
+* José Lapeira - Expert in programming, electronic systems, and software development
+* Keiner Duran - Specialized in algorithm optimization, robotic AI integration, and motion logic design
+* Mauricio Sánchez - Specialized in Arduino firmware, motor control, and electronic applications
+
+## Components Used
+
+Our robot is built with precision hardware to ensure stability, responsiveness, and energy optimization.
+
+<table>
+  <tr>
+    <th width="150">Component</th>
+    <th>Image</th>
+    <th>Technical Description</th>
+  </tr>
+  
+  <tr>
+    <td><strong>Arduino Uno</strong></td>
+    <td><img src="https://www.videoycomputacion.com.ve/5808-large_default/arduino-uno-r3-atmega-dip-328p-chip-grde.jpg" width="120" alt="Arduino Uno"></td>
+    <td>Main microcontroller managing sensor input (I2C, digital) and motion control (PWM).<br>
+    <em>Specifications:</em> ATmega328P, 16MHz, 32KB flash, 14 digital I/O</td>
+  </tr>
+
+  <tr>
+    <td><strong>L298N H-Bridge</strong></td>
+    <td><img src="https://acdn-us.mitiendanube.com/stores/975/836/products/17637-mla20140879523_082014-o-8f0828cf82de8cee6415565106613680-480-0.jpg" width="120" alt="L298N H-Bridge"></td>
+    <td>Dual-channel motor controller for direction and speed.<br>
+    <em>Specifications:</em><br>
+    • Logic voltage: 5V<br>
+    • Motor voltage: +5V to +35V<br>
+    • Peak current: 2A per channel<br>
+    • Maximum power: 25W<br>
+    • Protection: Built-in suppression diodes<br>
+    <em>Arduino connection:</em><br>
+    • ENA/ENB → PWM pins (speed)<br>
+    • IN1/IN2 → Digital pins (direction)<br>
+    • +12V → External 9V source<br>
+    <em>Project use:</em> Bidirectional control of NXT motor</td>
+  </tr>
+
+  <tr>
+    <td><strong>NXT to L298N Adapter</strong></td>
+    <td><img src="https://bricksandminifigshuntsville.com/cdn/shop/files/53787.png?v=1735750369" width="120" alt="NXT Adapter"></td>
+    <td>Interface between LEGO motor and standard controllers.<br>
+    <em>Configuration:</em><br>
+    • RJ12 to dupont terminals<br>
+    • Pin mapping: Black (-), Red (+)<br>
+    • Length: 50cm<br>
+    <em>Required modification:</em> Wire cutting/stripping for direct L298N connection</td>
+  </tr>
+
+  <tr>
+    <td><strong>ESP32 with Camera</strong></td>
+    <td><img src="https://asset.conrad.com/media10/isa/160267/c1/-/en/002332111PI00/image.jpg?x=400&y=400&format=jpg&ex=400&ey=400&align=center" width="120" alt="ESP32-CAM"></td>
+    <td>Computer vision module for navigation.<br>
+    <em>Capabilities:</em> Dual-core 240MHz, OV2640 (2MP), WiFi/Bluetooth, OpenCV compatible</td>
+  </tr>
+
+  <tr>
+    <td><strong>VL53L0X Sensor</strong></td>
+    <td><img src="https://naylampmechatronics.com/1620-superlarge_default/sensor-vl53l0x-de-tof.jpg" width="120" alt="VL53L0X"></td>
+    <td>Time-of-Flight (ToF) sensor for obstacle detection.<br>
+    <em>Range:</em> 50-1200mm, ±3% accuracy, I2C interface</td>
+  </tr>
+
+  <tr>
+    <td><strong>Breadboard</strong></td>
+    <td><img src="https://eloctavobit.com/imagenes/2023/06/64799b86081a2.webp" width="120" alt="Breadboard"></td>
+    <td>Prototyping platform for quick interconnections.<br>
+    <em>Configuration:</em> 830 points, power bus distribution</td>
+  </tr>
+
+  <tr>
+    <td><strong>Voltage Regulators</strong></td>
+    <td><img src="https://robot.com.ve/wp-content/uploads/2021/08/AR0202-lm317-_v1.jpg" width="120" alt="LM7805 Regulator"></td>
+    <td>Power management system.<br>
+    <em>Specifications:</em> LM7805 (5V, 1A), LM1117 (3.3V), with heat sinks</td>
+  </tr>
+
+  <tr>
+    <td><strong>SG90 Servomotor</strong></td>
+    <td><img src="https://www.aranacorp.com/wp-content/uploads/towerpro-servo-sg90.jpg" width="120" alt="SG90 Servo"></td>
+    <td>Direction control and auxiliary mechanisms.<br>
+    <em>Specifications:</em> 4.8-6V, 180° rotation, 1.8kg/cm torque</td>
+  </tr>
+</table>
+
+
+## Sensor Processing and Autonomous Navigation
+The VL53L0X sensor plays a crucial role in obstacle detection, allowing the robot to measure distance in real time and adjust its movement accordingly. The robot follows a sensor-driven motion algorithm, continuously refining motor speed and navigation logic.
+
+* Obstacle detection: The distance sensor identifies objects and dynamically adjusts the robot's path
+* ESP32 camera input: Processes real-time images for terrain analysis and movement decisions
+* Motor control logic: The Arduino Uno manages speed control through PWM signals and servo adjustments
+
+## Required Software and Development Tools
+Programming and compilation tools:
+* Arduino IDE - Used for coding, compiling and uploading firmware
+* Tinkercad - Virtual electronics simulation tool for circuit prototyping
+
+Essential libraries:
+* Wire.h - Supports sensor communication and data collection
+* Adafruit_VL53L0X.h - Controls distance measurement operations
+* Servo.h - Manages servo motor positioning and feedback control
+
+## Installation and Operation Instructions
+How to deploy the robot firmware:
+1. Download Arduino IDE and install all necessary board drivers
+2. Connect Arduino Uno via USB and verify IDE recognition
+3. Install all required libraries (VL53L0X, Servo, Wire, Adafruit Motor Control)
+4. Compile and upload firmware, initializing sensor motion algorithms
+5. Test sensor performance using Serial Monitor readings
+6. Run autonomous navigation tests and fine-tune movement responses
+
+## Diagnostics and Evaluation
+Performance validation tests:
+* Sensor accuracy test: Confirms obstacle detection reliability and distance precision
+* Motor speed calibration: Ensures smooth motion transitions and speed adjustments
+* Servo alignment: Evaluates response time and angle precision for additional motion control
+* Camera-based navigation: Assesses terrain recognition and edge detection capabilities
+
+## Competitive Strategy and Adaptability
+Our robot is designed to react dynamically in competition environments, ensuring maximum precision and adaptability:
+
+* Real-time sensor data: The robot instantly adjusts movement based on incoming distance measurements
+* Vision-based edge detection: The ESP32 processes camera input to determine safe paths and avoid barriers
+* Energy-efficient motion management: Reduces unnecessary movement to optimize navigation cycles
+* Configurable control logic: Adjusts servo responsiveness and motor calibration as needed
+
+## Future Development and Contribution
 Our long-term vision for the project includes:
-- Expanding **servo motor control** capabilities for greater precision in movement adjustments.
-- Optimizing **ESP32 vision-based object tracking** for advanced competition scenarios.
-- Developing **smart battery management** strategies to improve operational longevity and efficiency.
-- Publishing open-source documentation on **sensor-based autonomous navigation solutions**.
+
+* Expanding servo control capabilities for more precise motion adjustments
+* Optimizing ESP32 vision-based object tracking for advanced competition scenarios
+* Developing smart battery management strategies to improve longevity and operational efficiency
+* Publishing open-source documentation on sensor-based autonomous navigation solutions
