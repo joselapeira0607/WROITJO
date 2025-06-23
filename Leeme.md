@@ -35,9 +35,6 @@ Objetivos principales:
 * Desarrollar una estrategia de conducción autónoma optimizada para retos de robótica.
 * Contribuir a la robótica de código abierto documentando nuestra solución para futuros equipos.
 
-## Componentes Utilizados
-
-Nuestro robot está construido con hardware de precisión para garantizar estabilidad, capacidad de respuesta y optimización energética.
 
 ## Componentes Utilizados
 
