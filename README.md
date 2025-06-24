@@ -80,12 +80,12 @@ Our robot is built with precision hardware to ensure stability, responsiveness, 
     • Length: 50cm<br>
     <em>Required modification:</em> Wire cutting/stripping for direct L298N connection</td>
   </tr>
-
+  
   <tr>
-    <td><strong>ESP32 with Camera</strong></td>
-    <td><img src="https://asset.conrad.com/media10/isa/160267/c1/-/en/002332111PI00/image.jpg?x=400&y=400&format=jpg&ex=400&ey=400&align=center" width="120" alt="ESP32-CAM"></td>
-    <td>Computer vision module for navigation.<br>
-    <em>Capabilities:</em> Dual-core 240MHz, OV2640 (2MP), WiFi/Bluetooth, OpenCV compatible</td>
+    <td><strong>ESP32-WROOM-32D</strong></td>
+    <td><img src="http://wiztech.com.ua/wp-content/uploads/2024/04/ESP32-wroom-32D.webp" width="120" alt="ESP32-WROOM-32D"></td>
+    <td>Wi-Fi/Bluetooth MCU for IoT and embedded systems.<br>
+    <em>Capabilities:</em> Dual-core 240MHz, 4MB Flash, 520KB SRAM, 802.11 b/g/n Wi-Fi, Bluetooth 4.2, low-power modes.</td>
   </tr>
 
   <tr>
