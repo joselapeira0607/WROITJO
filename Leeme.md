@@ -91,7 +91,7 @@ Nuestro robot está construido con hardware de precisión para garantizar estabi
   </tr>
 
   <tr>
-    <td><strong>Sensor VL53L0X</strong></td>
+    <td><strong>Sensores VL53L0X</strong></td>
     <td><img src="https://naylampmechatronics.com/1620-superlarge_default/sensor-vl53l0x-de-tof.jpg" width="120" alt="VL53L0X"></td>
     <td>Sensor ToF (Time-of-Flight) para detección de obstáculos.<br>
     <em>Rango:</em> 50-1200mm, ±3% precisión, interface I2C</td>
