@@ -1,4 +1,4 @@
-Electromechanical diagrams
-====
+<h1 align="center">Schematic diagrams</h1>
 
-This directory must contain one or several schematic diagrams in form of JPEG, PNG or PDF of the electromechanical components illustrating all the elements (electronic components and motors) used in the vehicle and how they connect to each other.
+![Scheme](https://github.com/user-attachments/assets/4d1c331c-ab93-406d-91ff-76afec973320)
+
