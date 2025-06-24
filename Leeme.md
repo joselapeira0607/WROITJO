@@ -50,72 +50,80 @@ Nuestro robot está construido con hardware de precisión para garantizar estabi
   <tr>
     <td><strong>Arduino Uno</strong></td>
     <td><img src="https://www.videoycomputacion.com.ve/5808-large_default/arduino-uno-r3-atmega-dip-328p-chip-grde.jpg" width="120" alt="Arduino Uno"></td>
-    <td>Microcontrolador principal que gestiona la entrada de sensores (I2C, digital) y control de movimiento (PWM).<br>
+    <td>Microcontrolador principal para gestión de sensores (I2C, digital) y control de movimiento (PWM).<br>
     <em>Especificaciones:</em> ATmega328P, 16MHz, 32KB flash, 14 E/S digitales</td>
   </tr>
 
   <tr>
     <td><strong>Puente H L298N</strong></td>
-    <td><img src="https://acdn-us.mitiendanube.com/stores/975/836/products/17637-mla20140879523_082014-o-8f0828cf82de8cee6415565106613680-480-0.jpg" width="120" alt="Puente H L298N"></td>
-    <td>Controlador de motores de doble canal para dirección y velocidad.<br>
+    <td><img src="https://acdn-us.mitiendanube.com/stores/975/836/products/17637-mla20140879523_082014-o-8f0828cf82de8cee6415565106613680-480-0.jpg" width="120" alt="L298N H-Bridge"></td>
+    <td>Controlador dual para motores (dirección y velocidad).<br>
     <em>Especificaciones:</em><br>
     • Voltaje lógico: 5V<br>
     • Voltaje motor: +5V a +35V<br>
     • Corriente pico: 2A por canal<br>
     • Potencia máxima: 25W<br>
-    • Protección: Diodos de supresión<br>
-    <em>Conexión con Arduino:</em><br>
+    • Protección: Diodos supresores integrados<br>
+    <em>Conexión Arduino:</em><br>
     • ENA/ENB → Pines PWM (velocidad)<br>
     • IN1/IN2 → Pines digitales (dirección)<br>
     • +12V → Fuente externa 9V<br>
-    <em>Uso en el proyecto:</em> Control bidireccional del motor NXT</td>
+    <em>Uso en proyecto:</em> Control bidireccional del motor NXT</td>
   </tr>
 
-  
   <tr>
     <td><strong>Adaptador NXT a L298N</strong></td>
-    <td><img src="https://bricksandminifigshuntsville.com/cdn/shop/files/53787.png?v=1735750369" width="120" alt="Adaptador NXT"></td>
-    <td>Interface de conexión entre motor LEGO y controladores estándar.<br>
+    <td><img src="https://bricksandminifigshuntsville.com/cdn/shop/files/53787.png?v=1735750369" width="120" alt="NXT Adapter"></td>
+    <td>Interfaz entre motor LEGO y controladores estándar.<br>
     <em>Configuración:</em><br>
-    • Cable RJ12 a terminales dupont<br>
+    • RJ12 a terminales dupont<br>
     • Mapeo de pines: Negro (-), Rojo (+)<br>
     • Longitud: 50cm<br>
-    <em>Modificación requerida:</em> Corte y pelado de cables para conexión directa al L298N</td>
+    <em>Modificación requerida:</em> Corte/pelado de cables para conexión directa al L298N</td>
   </tr>
-
+  
   <tr>
-    <td><strong>ESP32 con cámara</strong></td>
-    <td><img src="https://asset.conrad.com/media10/isa/160267/c1/-/en/002332111PI00/image.jpg?x=400&y=400&format=jpg&ex=400&ey=400&align=center" width="120" alt="ESP32-CAM"></td>
-    <td>Módulo de visión artificial para navegación.<br>
-    <em>Capacidades:</em> Dual-core 240MHz, OV2640 (2MP), WiFi/Bluetooth, compatible con OpenCV</td>
+    <td><strong>ESP32-WROOM-32D</strong></td>
+    <td><img src="http://wiztech.com.ua/wp-content/uploads/2024/04/ESP32-wroom-32D.webp" width="120" alt="ESP32-WROOM-32D"></td>
+    <td>Módulo Wi-Fi/Bluetooth para IoT y sistemas embebidos.<br>
+    <em>Características:</em><br>
+    • Procesador dual-core a 240MHz<br>
+    • 4MB Flash, 520KB SRAM<br>
+    • Conectividad: Wi-Fi 802.11 b/g/n y Bluetooth 4.2<br>
+    • Bajo consumo energético con múltiples modos sleep<br>
+    • Interfaces: 34 GPIO, UART, SPI, I2C, ADC<br>
+    <em>Uso en proyecto:</em> Comunicación inalámbrica y procesamiento paralelo</td>
   </tr>
 
   <tr>
     <td><strong>Sensores VL53L0X</strong></td>
     <td><img src="https://naylampmechatronics.com/1620-superlarge_default/sensor-vl53l0x-de-tof.jpg" width="120" alt="VL53L0X"></td>
-    <td>Sensor ToF (Time-of-Flight) para detección de obstáculos.<br>
-    <em>Rango:</em> 50-1200mm, ±3% precisión, interface I2C</td>
+    <td>Sensor de distancia por Time-of-Flight (ToF).<br>
+    <em>Rango:</em> 50-1200mm, precisión ±3%, interfaz I2C<br>
+    <em>Uso:</em> Detección de obstáculos y navegación autónoma</td>
   </tr>
 
   <tr>
     <td><strong>Protoboard</strong></td>
-    <td><img src="https://eloctavobit.com/imagenes/2023/06/64799b86081a2.webp" width="120" alt="Protoboard"></td>
-    <td>Plataforma de interconexión para prototipado rápido.<br>
-    <em>Configuración:</em> 830 puntos, distribución de buses de alimentación</td>
+    <td><img src="https://eloctavobit.com/imagenes/2023/06/64799b86081a2.webp" width="120" alt="Breadboard"></td>
+    <td>Plataforma de prototipado para conexiones rápidas.<br>
+    <em>Configuración:</em> 830 puntos, buses de alimentación distribuidos</td>
   </tr>
 
   <tr>
-    <td><strong>Reguladores de voltaje</strong></td>
-    <td><img src="https://robot.com.ve/wp-content/uploads/2021/08/AR0202-lm317-_v1.jpg" width="120" alt="Regulador LM7805"></td>
+    <td><strong>Reguladores de Voltaje</strong></td>
+    <td><img src="https://robot.com.ve/wp-content/uploads/2021/08/AR0202-lm317-_v1.jpg" width="120" alt="LM7805 Regulator"></td>
     <td>Sistema de gestión de energía.<br>
-    <em>Especificaciones:</em> LM7805 (5V, 1A), LM1117 (3.3V), con disipadores térmicos</td>
+    <em>Modelos:</em> LM7805 (5V, 1A), LM1117 (3.3V)<br>
+    <em>Accesorios:</em> Disipadores de calor para alta corriente</td>
   </tr>
 
   <tr>
     <td><strong>Servomotor SG90</strong></td>
-    <td><img src="https://www.aranacorp.com/wp-content/uploads/towerpro-servo-sg90.jpg" width="120" alt="Servo SG90"></td>
-    <td>Control de dirección y mecanismos auxiliares.<br>
-    <em>Especificaciones:</em> 4.8-6V, 180° rotación, torque 1.8kg/cm</td>
+    <td><img src="https://www.aranacorp.com/wp-content/uploads/towerpro-servo-sg90.jpg" width="120" alt="SG90 Servo"></td>
+    <td>Actuador para control direccional y mecanismos auxiliares.<br>
+    <em>Especificaciones:</em> 4.8-6V, rotación 180°, torque 1.8kg/cm<br>
+    <em>Conexión:</em> Alimentación + PWM (50Hz)</td>
   </tr>
 </table>
 
