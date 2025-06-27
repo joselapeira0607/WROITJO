@@ -125,6 +125,20 @@ Nuestro robot está construido con hardware de precisión para garantizar estabi
     <em>Especificaciones:</em> 4.8-6V, rotación 180°, torque 1.8kg/cm<br>
     <em>Conexión:</em> Alimentación + PWM (50Hz)</td>
   </tr>
+
+  <tr>
+    <td><strong>Pixy2 Camera</strong></td>
+    <td><img src="https://m.media-amazon.com/images/I/71ciGcchSaL.jpg" width="120" alt="Pixy2 Camera"></td>
+    <td>Sistema de visión artificial para detección de objetos por color.<br>
+    <em>Especificaciones:</em><br>
+    • Procesador dual-core NXP LPC4330 (200MHz)<br>
+    • Resolución: 1296x976 (RAW), 316x208 (procesada)<br>
+    • Firmas de color: 7 simultáneas<br>
+    • Interfaces: SPI, I2C, UART, USB<br>
+    • Consumo: 140mA @ 5V<br>
+    <em>Conexión:</em> SPI (recomendado) + Alimentación 5V<br>
+    <em>Uso en proyecto:</em> Detección de objetivos mediante códigos de color</td>
+  </tr>
 </table>
 
 
