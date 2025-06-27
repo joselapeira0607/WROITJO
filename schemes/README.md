@@ -1,4 +1,4 @@
-j<h1 align="center">Schematic diagrams</h1>
+<h1 align="center">Schematic diagrams</h1>
 
 ![Schemes](https://github.com/user-attachments/assets/42ad70bd-4dd1-42d8-9638-e8c6b0585144)
 
