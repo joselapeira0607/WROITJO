@@ -1,6 +1,7 @@
-<h1 align="center">Schematic diagrams</h1>
+j<h1 align="center">Schematic diagrams</h1>
 
-![Scheme](https://github.com/user-attachments/assets/4d1c331c-ab93-406d-91ff-76afec973320)
+![Schemes](https://github.com/user-attachments/assets/42ad70bd-4dd1-42d8-9638-e8c6b0585144)
+
 
 
 # 📁 Bill of materials
