@@ -71,16 +71,17 @@ Nuestro robot está construido con hardware de precisión para garantizar estabi
     <em>Uso en proyecto:</em> Control bidireccional del motor NXT</td>
   </tr>
 
-  <tr>
-    <td><strong>Adaptador NXT a L298N</strong></td>
-    <td><img src="https://bricksandminifigshuntsville.com/cdn/shop/files/53787.png?v=1735750369" width="120" alt="NXT Adapter"></td>
-    <td>Interfaz entre motor LEGO y controladores estándar.<br>
-    <em>Configuración:</em><br>
-    • RJ12 a terminales dupont<br>
-    • Mapeo de pines: Negro (-), Rojo (+)<br>
-    • Longitud: 50cm<br>
-    <em>Modificación requerida:</em> Corte/pelado de cables para conexión directa al L298N</td>
-  </tr>
+<tr>
+  <td><strong>Motor DC con Caja Reductora</strong></td>
+  <td><img src="https://robot.com.ve/wp-content/uploads/2021/08/Motorreductor-con-caja-reductora-6V-1-48-1.jpg" width="120" alt="Motor DC"></td>
+  <td>Motor de corriente continua compacto con sistema de reducción de engranajes integrado.<br>
+  <em>Especificaciones:</em><br>
+  • Voltaje: 6–12 V DC<br>
+  • Relación de engranaje: varía según el modelo (ej. 48:1)<br>
+  • Eje: tipo D de 6 mm<br>
+  • Optimizado para aplicaciones robóticas que requieren torque y control<br>
+  <em>Conexión:</em> Dos cables (rojo: +, negro: -) listos para conectarse a un controlador L298N o puente H similar</td>
+</tr>
   
   <tr>
     <td><strong>ESP32-WROOM-32D</strong></td>
