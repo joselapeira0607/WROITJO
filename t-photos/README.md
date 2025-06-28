@@ -1,6 +1,3 @@
-Team's photos
-====
-
 ## Who Are We?
 
 We are JO SLD, a dynamic and passionate team proudly born from the classrooms of Jesús Obrero Technical Institute, an institution known for nurturing skilled professionals grounded in discipline, innovation, and teamwork. Our name carries the initials of our members—José, Keiner, and Mauricio—and represents our shared commitment to excellence in robotics and technology.
