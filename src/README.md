@@ -4,198 +4,213 @@ An Arduino-based control system for autonomous navigation using distance sensors
 
 ### Parameters
 ```cpp
-#include <Servo.h>
+#include <Servo.h>  // Include the Servo library to control the steering mechanism
 
-// --- Configuración de pines ---
-const int motorPin1 = 3; // Control dirección motor (HIGH/LOW)
-const int motorPin2 = 6; // Control dirección motor (HIGH/LOW)
-const int servoPin = 9; // Pin para control del servo
+// === PIN CONFIGURATION ===
+const int motorPin1 = 3;  // Pin to control motor direction (forward)
+const int motorPin2 = 6;  // Pin to control motor direction (reverse or stop)
+const int servoPin   = 9; // PWM pin connected to the servo motor for steering
 
-// --- Parámetros del servo ---
-const int ANGULO_CENTRO = 90;
-const int ANGULO_MAX_DERECHA = 120;
-const int ANGULO_MAX_IZQUIERDA = 60;
+// === SERVO STEERING LIMITS ===
+const int ANGLE_CENTER       = 90;  // Neutral angle: wheels aligned straight
+const int ANGLE_MAX_RIGHT    = 120; // Max turn right angle
+const int ANGLE_MAX_LEFT     = 60;  // Max turn left angle
 
-// --- Umbrales y constantes ---
-const int UMBRAL_DIFERENCIA = 30; // mm para considerar recto
-const int MAX_DIFERENCIA = 160; // mm diferencia máxima esperada
-const int TIMEOUT_SENSORES = 1000; // ms sin datos antes de detenerse
+// === SENSOR LOGIC AND SAFETY LIMITS ===
+const int DIFFERENCE_THRESHOLD = 30;    // Acceptable difference (in mm) between sensors to consider straight
+const int MAX_DIFFERENCE       = 160;   // Max expected measurable difference to scale the steering
+const int SENSOR_TIMEOUT       = 1000;  // Stop the vehicle if no sensor data is received within this time (in ms)
 
-// --- Control de vueltas ---
-const int GIROS_POR_VUELTA = 4;
-const int MAX_VUELTAS = 3;
+// === LAPS AND TURNS CONTROL ===
+const int TURNS_PER_LAP = 4;  // Number of turns that count as one lap
+const int MAX_LAPS      = 3;  // Stop the vehicle after completing this many laps
 
-// --- Variables del sistema ---
-Servo myServo;
-String receivedData = "";
-bool newData = false;
-int valorSensor1 = 0;
-int valorSensor2 = 0;
-unsigned long lastSensorUpdate = 0;
+// === GLOBAL VARIABLES ===
+Servo myServo;                   // Servo object to control steering
+String receivedData = "";        // Buffer to collect incoming serial data
+bool newData         = false;    // Flag indicating whether a complete command was received
+int sensorValue1     = 0;        // Latest reading from sensor 1
+int sensorValue2     = 0;        // Latest reading from sensor 2
+unsigned long lastSensorUpdate = 0; // Timestamp of last sensor input
 
-// --- Estado del vehículo ---
-int girosDetectados = 0;
-int vueltasCompletadas = 0;
-bool estaGirando = false;
-bool vehiculoDetenido = false;
+// === STATE OF THE VEHICLE ===
+int turnsDetected     = 0;       // Counts how many turns have been completed in the current lap
+int lapsCompleted     = 0;       // Total laps completed
+bool isTurning        = false;   // Tracks if the robot was turning in the last cycle
+bool vehicleStopped   = false;   // True when the robot finishes its mission or hits a timeout
 
 void setup() {
-  Serial.begin(9600);
-  Serial.println("Arduino: Sistema iniciado. Esperando datos de sensores...");
+  Serial.begin(9600);  // Start serial communication to receive sensor data
+  Serial.println("Arduino: System started. Waiting for sensor data...");
 
-  // Configuración pines motor (solo ON/OFF)
-  pinMode(motorPin1, OUTPUT);
-  pinMode(motorPin2, OUTPUT);
-  
-  // Configuración servo
-  myServo.attach(servoPin);
-  centrarServo();
+  pinMode(motorPin1, OUTPUT); // Motor direction pin 1
+  pinMode(motorPin2, OUTPUT); // Motor direction pin 2
+
+  myServo.attach(servoPin);   // Attach servo control to the designated pin
+  centerServo();              // Initialize with centered steering
 }
 
-// ================= FUNCIONES DE CONTROL =================
-
-// --- Control de movimiento (ON/OFF) ---
-void avanzar() {
+// === MOVEMENT CONTROL FUNCTIONS ===
+void moveForward() {
+  // Set motor to move forward
   digitalWrite(motorPin1, HIGH);
   digitalWrite(motorPin2, LOW);
 }
 
-void detener() {
+void stopVehicle() {
+  // Stop the motor and straighten steering
   digitalWrite(motorPin1, LOW);
   digitalWrite(motorPin2, LOW);
-  centrarServo();
-  Serial.println("Movimiento: Detenido");
+  centerServo();
+  Serial.println("Movement: Stopped");
 }
 
-// --- Control de dirección ---
-void centrarServo() {
-  myServo.write(ANGULO_CENTRO);
+// === SERVO CONTROL ===
+void centerServo() {
+  // Set servo to center position
+  myServo.write(ANGLE_CENTER);
 }
 
-void girarDerecha(int angulo) {
-  angulo = constrain(angulo, ANGULO_CENTRO, ANGULO_MAX_DERECHA);
-  myServo.write(angulo);
-  Serial.print("Dirección: Girando derecha a ");
-  Serial.print(angulo);
-  Serial.println(" grados");
+void turnRight(int angle) {
+  // Clamp angle to max range and turn servo right
+  angle = constrain(angle, ANGLE_CENTER, ANGLE_MAX_RIGHT);
+  myServo.write(angle);
+  Serial.print("Direction: Turning right to ");
+  Serial.print(angle);
+  Serial.println(" degrees");
 }
 
-void girarIzquierda(int angulo) {
-  angulo = constrain(angulo, ANGULO_MAX_IZQUIERDA, ANGULO_CENTRO);
-  myServo.write(angulo);
-  Serial.print("Dirección: Girando izquierda a ");
-  Serial.print(angulo);
-  Serial.println(" grados");
+void turnLeft(int angle) {
+  // Clamp angle to max range and turn servo left
+  angle = constrain(angle, ANGLE_MAX_LEFT, ANGLE_CENTER);
+  myServo.write(angle);
+  Serial.print("Direction: Turning left to ");
+  Serial.print(angle);
+  Serial.println(" degrees");
 }
 
-// --- Comunicación Serial ---
+// === SERIAL COMMUNICATION HANDLING ===
 void recvSerialData() {
+  // Reads incoming characters until newline '\n' is detected
   while (Serial.available() > 0) {
     char receivedChar = Serial.read();
-    
     if (receivedChar == '\n') {
-      newData = true;
+      newData = true; // Full command received
       break;
     }
-    
     receivedData += receivedChar;
   }
 }
 
 void processSerialCommand() {
+  // Distinguish between Sensor 1 and Sensor 2 data
   if (receivedData.startsWith("S1:")) {
-    procesarDatosSensor(receivedData, valorSensor1, 1);
+    processSensorData(receivedData, sensorValue1, 1);
   } 
   else if (receivedData.startsWith("S2:")) {
-    procesarDatosSensor(receivedData, valorSensor2, 2);
+    processSensorData(receivedData, sensorValue2, 2);
   }
-  
+
+  // Reset input buffer after processing
   receivedData = "";
   newData = false;
-  lastSensorUpdate = millis();
+  lastSensorUpdate = millis();  // Update the timestamp
 }
 
-void procesarDatosSensor(String &data, int &valorSensor, int numSensor) {
+void processSensorData(String &data, int &sensorValue, int sensorNum) {
+  // Extract the number from format like "S1: 123 mm"
   int mmIndex = data.indexOf(" mm");
   if (mmIndex != -1) {
     int startIndex = data.indexOf(":") + 2;
     String valueString = data.substring(startIndex, mmIndex);
-    valorSensor = valueString.toInt();
-    
+    sensorValue = valueString.toInt();
+
     Serial.print("Sensor ");
-    Serial.print(numSensor);
-    Serial.print(" actualizado: ");
-    Serial.print(valorSensor);
+    Serial.print(sensorNum);
+    Serial.print(" updated: ");
+    Serial.print(sensorValue);
     Serial.println(" mm");
   }
 }
 
-// --- Lógica de navegación ---
-void actualizarDireccion() {
-  if (vehiculoDetenido) return;
+// === NAVIGATION DECISION MAKING ===
+void updateSteering() {
+  if (vehicleStopped) return; // If vehicle is halted, skip
 
-  int diferencia = valorSensor1 - valorSensor2;
+  int difference = sensorValue1 - sensorValue2;
 
-  if (abs(diferencia) <= UMBRAL_DIFERENCIA) {
-    centrarServo();
-    manejarGiroCompletado();
+  if (abs(difference) <= DIFFERENCE_THRESHOLD) {
+    // Continue straight if difference is within tolerance
+    centerServo();
+    handleTurnCompleted();
   } 
   else {
-    int anguloServo = map(diferencia, -MAX_DIFERENCIA, MAX_DIFERENCIA, 
-                         ANGULO_MAX_IZQUIERDA, ANGULO_MAX_DERECHA);
-    anguloServo = constrain(anguloServo, ANGULO_MAX_IZQUIERDA, ANGULO_MAX_DERECHA);
-    
-    if (diferencia > 0) {
-      girarDerecha(anguloServo);
+    // Map the difference linearly into an appropriate steering angle
+    int servoAngle = map(difference, -MAX_DIFFERENCE, MAX_DIFFERENCE, 
+                         ANGLE_MAX_LEFT, ANGLE_MAX_RIGHT);
+    servoAngle = constrain(servoAngle, ANGLE_MAX_LEFT, ANGLE_MAX_RIGHT);
+
+    // Turn left or right accordingly
+    if (difference > 0) {
+      turnRight(servoAngle);
     } else {
-      girarIzquierda(anguloServo);
+      turnLeft(servoAngle);
     }
-    
-    estaGirando = true;
+
+    isTurning = true; // Flag that we're mid-turn
   }
 }
 
-void manejarGiroCompletado() {
-  if (estaGirando) {
-    girosDetectados++;
-    Serial.print("Giro completado. Total: ");
-    Serial.println(girosDetectados);
-    
-    if (girosDetectados >= GIROS_POR_VUELTA) {
-      vueltasCompletadas++;
-      Serial.print("Vuelta completada: ");
-      Serial.println(vueltasCompletadas);
-      
-      girosDetectados = 0;
-      if (vueltasCompletadas >= MAX_VUELTAS) {
-        vehiculoDetenido = true;
-        detener();
-        Serial.println("Misión completada: 3 vueltas");
+void handleTurnCompleted() {
+  // Detect change from turning to straight
+  if (isTurning) {
+    turnsDetected++;
+    Serial.print("Turn completed. Total: ");
+    Serial.println(turnsDetected);
+
+    // If number of turns equals one full lap
+    if (turnsDetected >= TURNS_PER_LAP) {
+      lapsCompleted++;
+      Serial.print("Lap completed: ");
+      Serial.println(lapsCompleted);
+
+      turnsDetected = 0; // Reset counter for the next lap
+
+      if (lapsCompleted >= MAX_LAPS) {
+        // Mission success! Stop everything
+        vehicleStopped = true;
+        stopVehicle();
+        Serial.println("Mission complete: 3 laps finished");
       }
     }
-    
-    estaGirando = false;
+
+    isTurning = false; // Reset turn state
   }
 }
 
-void verificarTimeoutSensores() {
-  if (millis() - lastSensorUpdate > TIMEOUT_SENSORES) {
-    Serial.println("ALERTA: Timeout en sensores. Deteniendo...");
-    detener();
-    vehiculoDetenido = true;
+void checkSensorTimeout() {
+  // If too much time passed without sensor input, stop for safety
+  if (millis() - lastSensorUpdate > SENSOR_TIMEOUT) {
+    Serial.println("WARNING: Sensor timeout. Stopping vehicle...");
+    stopVehicle();
+    vehicleStopped = true;
   }
 }
 
-// --- Loop principal ---
+// === MAIN LOOP ===
 void loop() {
-  if (vehiculoDetenido) return;
+  if (vehicleStopped) return; // Skip logic if mission is already done
 
-  recvSerialData();
-  if (newData) processSerialCommand();
+  recvSerialData();       // Check for new sensor data
+  if (newData) {
+    processSerialCommand();
+  }
 
-  if (!vehiculoDetenido) {
-    avanzar();
-    actualizarDireccion();
-    verificarTimeoutSensores();
+  // Run only if vehicle is allowed to move
+  if (!vehicleStopped) {
+    moveForward();        // Activate motors
+    updateSteering();     // Adjust direction based on sensors
+    checkSensorTimeout(); // Safety mechanism
   }
 }
+
