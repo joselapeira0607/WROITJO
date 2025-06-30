@@ -24,7 +24,7 @@ Este año, la categoría Futuros Ingenieros presenta un reto apasionante: crear 
 | **/schemes**   | 📐 Diagramas | Diagramas en JPEG/PNG/PDF de:<br>- Esquema electrónico<br>- Conexiones<br>- Distribución mecánica | ✅ Obligatorio |
 | **/src**       | 💻 Código  | Estructura recomendada:<br>- `/firmware` (código Arduino/ESP32)<br>- `/vision` (procesamiento imágenes)<br>- `/docs` (manuales técnicos) | ✅ Obligatorio |
 | **/models**    | 🖨️ 3D/CNC | Archivos opcionales:<br>- Formatos: STL, DXF, STEP<br>- Organizados por componente | ❌ Opcional |
-| **/other**     | 📄 Extra   | Documentación adicional:<br>- Protocolos comunicación<br>- Especificaciones técnicas<br>- Guías de calibración | ❌ Opcional |
+| **/other**     | 📄 Extra   | Documentación adicional:<br>- Protocolos comunicación<br>- Reporte técnico | ❌ Opcional |
 
 ## Objetivo del proyecto
 El objetivo de este proyecto es diseñar, construir y programar un robot autónomo utilizando hardware de código abierto, toma de decisiones basada en sensores y algoritmos de movimiento adaptativos. Nuestro robot analiza dinámicamente su entorno mediante procesamiento integrado y retroalimentación de sensores, garantizando una navegación eficiente mientras supera obstáculos de forma autónoma.
