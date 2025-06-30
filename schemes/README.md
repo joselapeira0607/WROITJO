@@ -1,6 +1,6 @@
 <h1 align="center">Schematic diagrams</h1>
 
-![Diagrama en blanco](https://github.com/user-attachments/assets/4b326b55-12a5-4f91-9434-7df377bbd7fd)
+![Diagrama en blanco (1)](https://github.com/user-attachments/assets/8d994640-49fc-4bd6-ba16-e3e5d442daac)
 
 
 
