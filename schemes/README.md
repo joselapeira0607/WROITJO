@@ -43,7 +43,7 @@ These Time-of-Flight sensors measured lateral distances to nearby walls or barri
 ### 🎥 Pixy2 Camera
 Enabled the robot to visually detect critical elements of the course such as colored columns or stoplights. It interpreted multiple color signatures in real time and passed this information to the control algorithm, allowing dynamic decisions such as obstacle avoidance or behavior modulation based on color context.
 
-### HC-SR04
+### 📡 HC-SR04
 The HC-SR04 was integrated into the robotic platform as a forward-facing obstacle detection module. Its working principle—based on the reflection of ultrasonic sound waves—allowed the system to calculate the distance to frontal objects accurately within a 2–400 cm range. This made it especially useful for early detection of walls or barriers directly ahead of the robot.
 
 ### 🧠 ESP32-WROOM-32D
