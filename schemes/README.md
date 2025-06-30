@@ -16,6 +16,7 @@
 | 2        | VL53L0X          | ![VL53L0X](https://naylampmechatronics.com/1620-superlarge_default/sensor-vl53l0x-de-tof.jpg) | Time-of-Flight (ToF) laser distance sensor. |
 | 1        | ESP32-WROOM-32D  | ![ESP32](http://wiztech.com.ua/wp-content/uploads/2024/04/ESP32-wroom-32D.webp) | Dual-core Wi-Fi/Bluetooth MCU for IoT. |
 | 1        | Pixy2  | ![image](https://github.com/user-attachments/assets/75e9e0f7-ad2d-49d0-8a4a-0eb5d30714c4) | Programmable camera sensor that detects objects by color (up to 7 signatures simultaneously). Ideal for line tracking, object detection, and autonomous robot navigation. |
+| 1        | HC-SR04 Ultrasonic Sensor | ![HC-SR04](https://m.media-amazon.com/images/I/6195Y-0lz1L._AC_UF1000,1000_QL80_.jpg) | Affordable distance sensor that uses ultrasonic waves to detect obstacles at medium to long range. Ideal for front-facing obstacle detection. |
 
 ## ✅ Justification of Component Selection
 
@@ -41,6 +42,9 @@ These Time-of-Flight sensors measured lateral distances to nearby walls or barri
 
 ### 🎥 Pixy2 Camera
 Enabled the robot to visually detect critical elements of the course such as colored columns or stoplights. It interpreted multiple color signatures in real time and passed this information to the control algorithm, allowing dynamic decisions such as obstacle avoidance or behavior modulation based on color context.
+
+## HC-SR04
+The HC-SR04 was integrated into the robotic platform as a forward-facing obstacle detection module. Its working principle—based on the reflection of ultrasonic sound waves—allowed the system to calculate the distance to frontal objects accurately within a 2–400 cm range. This made it especially useful for early detection of walls or barriers directly ahead of the robot.
 
 ### 🧠 ESP32-WROOM-32D
 Deployed as the final microcontroller for its high processing speed, dual-core architecture, and robust I2C handling. It coordinated simultaneous tasks: managing sensors, computing navigation logic, and driving actuators — all essential for WRO's fast-paced circuit environment.
