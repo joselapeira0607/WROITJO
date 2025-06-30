@@ -214,3 +214,5 @@ void loop() {
   }
 }
 
+
+![Diagrama en blanco](https://github.com/user-attachments/assets/ccd171f0-ca1c-49ac-a78f-668fb5feaa24)
