@@ -24,7 +24,7 @@ This year, the Future Engineers category presents an exciting challenge: creatin
 | **/schemes**   | 📐 Diagrams | Diagrams in JPEG/PNG/PDF of:<br>- Electronic schematic<br>- Wiring connections<br>- Mechanical layout | ✅ Required |
 | **/src**       | 💻 Code  | Recommended structure:<br>- `/firmware` (Arduino/ESP32 code)<br>- `/vision` (image processing)<br>- `/docs` (technical manuals) | ✅ Required |
 | **/models**    | 🖨️ 3D/CNC | Optional files:<br>- Formats: STL, DXF, STEP<br>- Organized by component | ❌ Optional |
-| **/other**     | 📄 Extra   | Additional documentation:<br>- Communication protocols<br>- Technical specifications<br> | ❌ Optional |
+| **/other**     | 📄 Extra   | Additional documentation:<br>- Communication protocols<br>- Technical Report<br> | ❌ Optional |
 
 ## Project Objective
 The objective of this project is to design, build, and program an autonomous robot using open-source hardware, sensor-based decision making, and adaptive movement algorithms. Our robot dynamically analyzes its environment through integrated processing and sensor feedback, ensuring efficient navigation while autonomously overcoming obstacles.
