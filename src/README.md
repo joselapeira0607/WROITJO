@@ -2,6 +2,9 @@
 
 An Arduino-based control system for autonomous navigation using distance sensors and servo steering.
 
+![Diagrama en blanco](https://github.com/user-attachments/assets/0cb5d8bd-3774-4bd6-bd49-aaf07e8f02fb)
+
+
 ### Parameters
 ```cpp
 #include <Servo.h>  // Include the Servo library to control the steering mechanism
@@ -213,6 +216,3 @@ void loop() {
     checkSensorTimeout(); // Safety mechanism
   }
 }
-
-
-![Diagrama en blanco](https://github.com/user-attachments/assets/ccd171f0-ca1c-49ac-a78f-668fb5feaa24)
