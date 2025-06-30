@@ -1,160 +1,144 @@
-<h1 align="center">Informe Técnico</h1>
-<h2 align="center">Desarrollo del Robot Autónomo para las Olimpiadas Mundiales de Robótica (WRO)</h2>
+<h1 align="center">Technical Report</h1>
+<h2 align="center">Development of an Autonomous Robot for the World Robot Olympiad (WRO)</h2>
 
-<p align="center"><i>Documentación completa del diseño, optimización y resultados de un robot móvil autónomo preparado para superar circuitos cerrados con obstáculos.</i></p>
+<p align="center"><i>Complete documentation of the design, optimization, and results of an autonomous mobile robot prepared to navigate obstacle-filled closed circuits.</i></p>
 
 ---
 
-## 🧭 Introducción
+## 🧭 Introduction
 
-Este documento describe de manera detallada el proceso de diseño, ensamblaje, optimización y validación de un robot autónomo creado con el propósito de competir en las Olimpiadas Mundiales de Robótica (WRO). El principal objetivo técnico consistía en lograr que el robot completara tres vueltas dentro de una pista cerrada, evitando con precisión tanto muros como obstáculos intermedios.
+This document provides a detailed description of the design, assembly, optimization, and validation process of an autonomous robot created to compete in the World Robot Olympiad (WRO). The primary technical objective was to enable the robot to complete three laps within a closed circuit while precisely avoiding walls and intermediate obstacles.
 
-A lo largo del proceso se abordaron desafíos en tres áreas fundamentales: mecánica, electrónica y control inteligente. Las iteraciones técnicas permitieron refinar tanto el hardware como el algoritmo de navegación, obteniendo como resultado un sistema robusto y confiable.
+Throughout the process, we addressed challenges in three fundamental areas: mechanics, electronics, and intelligent control. Technical iterations allowed us to refine both the hardware and navigation algorithm, resulting in a robust and reliable system.
 
 > 📷 ![460205220-4385875f-8fb5-4cfd-8109-ed76797ce5a7](https://github.com/user-attachments/assets/7eeb1662-5465-4cd8-8b95-888d35d6f3af)
 
-
 ---
 
-## 🧪 Fase Inicial: Prototipado con LEGO (Marzo)
+## 🧪 Initial Phase: LEGO Prototyping (March)
 
-La etapa inicial se enfocó en la construcción de un prototipo funcional utilizando piezas LEGO Mindstorms, dada su versatilidad modular y facilidad de prueba.
+The initial stage focused on building a functional prototype using LEGO Mindstorms components, given their modular versatility and ease of testing.
 
-### Diseño Mecánico
+### Mechanical Design
 
-Se desarrolló un chasis básico con componentes LEGO, el cual integró:
+We developed a basic chassis with LEGO components, which incorporated:
+- A differential steering system
+- Front wheels connected to a 3D-printed toothed beam actuated by a servo motor
+- Rear wheels with traction provided by an NXT motor
 
-- Un sistema de dirección diferencial.
-- Ruedas delanteras conectadas a una viga dentada impresa en 3D y accionada por un servomotor.
-- Ruedas traseras con tracción proporcionada por un motor NXT.
+### Electronic Circuit
 
-### Circuito Electrónico
-
-El sistema de control y detección en esta fase inicial fue conformado por:
-
-- **Microcontrolador:** Arduino UNO.  
-- **Control de motores:** Puente H L298N.  
-- **Sensado:** Dos sensores ultrasónicos HC-SR04 ubicados en posiciones frontal y lateral.  
-- **Alimentación:** Tres baterías recargables de 4V conectadas en serie (12V total) y distribuida mediante protoboard.  
+The initial control and detection system consisted of:
+- **Microcontroller:** Arduino UNO  
+- **Motor control:** L298N H-bridge  
+- **Sensing:** Two HC-SR04 ultrasonic sensors positioned front and side  
+- **Power:** Three 4V rechargeable batteries connected in series (12V total) distributed via breadboard  
 
 > 📷 ![IMG_20250425_150937_312](https://github.com/user-attachments/assets/b59a5c2e-5463-4042-b58e-b8d414681b3f)
 
-### Problemas Técnicos Identificados
+### Identified Technical Issues
 
-Durante las primeras pruebas, se identificaron limitaciones relevantes:
-
-- Alta sensibilidad a ruido ultrasónico en los sensores HC-SR04, generando falsas detecciones.
-- Precisión limitada en curvas cerradas debido a la flexibilidad estructural del sistema diferencial LEGO.
-- Pérdida de torque y vibraciones por sobrecalentamiento del motor NXT a altas velocidades.
-
----
-
-## 🔧 Optimización: Sensores y Controlador
-
-Con base en los inconvenientes detectados, se planteó una reestructuración del sistema de sensado y control.
-
-### Migración a Sensores VL53L0X
-
-El sistema ultrasónico fue reemplazado por sensores Time-of-Flight VL53L0X. Estos nuevos sensores ofrecieron:
-
-- Resolución milimétrica con alta estabilidad.
-- Inmunidad a interferencias acústicas del entorno.
-- Rango de detección adaptable de hasta 2 metros.
-
-**Desafíos derivados:**
-
-- El rendimiento de los sensores se veía afectado por iluminación excesiva.
-- Las lecturas por protocolo I2C requerían mayor velocidad de procesamiento.
-
-### Adopción del ESP32
-
-Para mejorar la capacidad de lectura y procesamiento paralelo, se integró un ESP32 que ofrecía:
-
-- Doble núcleo para multitarea (lectura de sensores y control de motores en paralelo).
-- Comunicación I2C más eficiente y sin congestión en el bus de datos.
+During initial testing, we identified significant limitations:
+- High sensitivity to ultrasonic noise in HC-SR04 sensors, causing false detections
+- Limited precision in tight turns due to structural flexibility of the LEGO differential system
+- Torque loss and vibrations from NXT motor overheating at high speeds
 
 ---
 
-## ⚙️ Rediseño Mecánico: Chasis DKS-Basic
+## 🔧 Optimization: Sensors and Controller
 
-### Limitaciones del Chasis LEGO
+Based on the identified issues, we restructured the sensing and control system.
 
-- Baja rigidez estructural ante cargas dinámicas.
-- Holgura en las conexiones móviles.
-- Elevado peso, reduciendo agilidad y autonomía.
+### Migration to VL53L0X Sensors
 
-### Ventajas del DKS-Basic
+The ultrasonic system was replaced with VL53L0X Time-of-Flight sensors, which offered:
+- Millimeter resolution with high stability
+- Immunity to environmental acoustic interference
+- Adjustable detection range up to 2 meters
 
-Se optó por migrar a un chasis metálico profesional (DKS-Basic), el cual ofrecía:
+**Resulting challenges:**
+- Sensor performance was affected by excessive lighting
+- I2C protocol readings required higher processing speed
 
-- Mayor resistencia gracias al aluminio anodizado.
-- Sistema de rodamientos de bolas, reduciendo fricción.
-- Geometría más compacta, que optimiza los giros cerrados.
-- Compatibilidad con motores DC comerciales.
+### ESP32 Integration
 
-### Actualización de Tracción
+To improve parallel reading and processing capability, we integrated an ESP32 that provided:
+- Dual-core processing for multitasking (parallel sensor reading and motor control)
+- More efficient I2C communication without bus congestion
 
-- Sustitución del motor NXT por un motor DC con caja reductora.
-- Mejora de torque y control de velocidad con señal PWM.
-- Ruedas personalizadas diseñadas en CAD e impresas en 3D para adaptarse a los rodamientos del nuevo chasis.
+---
+
+## ⚙️ Mechanical Redesign: DKS-Basic Chassis
+
+### LEGO Chassis Limitations
+- Low structural rigidity under dynamic loads
+- Play in mobile connections
+- Excessive weight, reducing agility and autonomy
+
+### DKS-Basic Advantages
+
+We transitioned to a professional metal chassis (DKS-Basic) that offered:
+- Greater resistance thanks to anodized aluminum
+- Ball bearing system reducing friction
+- More compact geometry optimizing tight turns
+- Compatibility with commercial DC motors
+
+### Traction System Upgrade
+- Replaced NXT motor with gear-reduced DC motor
+- Improved torque and speed control with PWM signal
+- Custom CAD-designed 3D-printed wheels adapted to the new chassis bearings
 
 > 📷 ![left-view](https://github.com/user-attachments/assets/24d5cb4c-50c7-49b2-b633-ab05e7ddc39f)
 
 ---
 
-## 🧠 Sistema de Sensado y Control Final
+## 🧠 Final Sensing and Control System
 
-### Configuración de Sensores
+### Sensor Configuration
 
-La versión final integró una arquitectura híbrida de sensores:
+The final version incorporated a hybrid sensor architecture:
+- 1x HC-SR04 (front position) for long-range obstacle detection
+- 2x VL53L0X (side) for curve navigation and precise avoidance
 
-- 1x HC-SR04 (posición frontal) para detección lejana de obstáculos.
-- 2x VL53L0X (laterales) para navegabilidad en curvas y evitación precisa.
+### Avoidance Algorithm
 
-### Algoritmo de Evasión
+We implemented deterministic logic firmware using a finite state machine (FSM) defining three operation modes:
+1. **Free movement:** no detected obstacles
+2. **Lateral turn:** partial wall presence
+3. **Braking and reverse:** critical front wall detection
 
-Se implementó un firmware basado en lógica determinista mediante una máquina de estados finitos (FSM), que define tres modos de operación:
-
-1. **Avance libre:** sin obstáculos detectados.
-2. **Giro lateral:** ante presencia parcial de muros.
-3. **Frenado y reversa:** cuando se detecta un muro frontal crítico.
-
-Las lecturas fueron filtradas mediante un algoritmo de mediana para eliminar valores anómalos.
+Readings were filtered using a median algorithm to eliminate anomalous values.
 
 ---
 
-## 📈 Evaluación y Resultados
+## 📈 Evaluation and Results
 
-### Métricas de Desempeño
+### Performance Metrics
 
-| Parámetro               | Valor alcanzado  |
+| Parameter               | Achieved Value  |
 |-------------------------|------------------|
-| Velocidad máxima        | 1.2 m/s          |
-| Tiempo promedio por vuelta | 15 segundos   |
-| Precisión de giro       | ±2 cm            |
-| Precisión de detección  | 98%              |
+| Maximum speed           | 1.2 m/s          |
+| Average lap time        | 15 seconds       |
+| Turning precision       | ±2 cm            |
+| Detection accuracy      | 98%              |
 
-
-### Lecciones Aprendidas
-
-- La redundancia sensorial mejora considerablemente la confiabilidad.
-- Un chasis profesional contribuye significativamente a la estabilidad dinámica del robot.
-- El uso del ESP32 demuestra ser altamente adecuado para sistemas de navegación en tiempo real que requieren múltiples tareas simultáneas.
+### Lessons Learned
+- Sensor redundancy significantly improves reliability
+- A professional chassis greatly contributes to dynamic stability
+- The ESP32 proves highly suitable for real-time navigation systems requiring simultaneous multitasking
 
 ---
 
-## 🏁 Conclusión
+## 🏁 Conclusion
 
-El sistema robótico desarrollado no solo logró cumplir los requerimientos establecidos por la competencia WRO, sino que también superó las expectativas de precisión y estabilidad. La implementación de sensores híbridos, un controlador de alto rendimiento como el ESP32 y un chasis mecánico profesional fueron factores determinantes para el éxito del proyecto.
+The developed robotic system not only met the WRO competition requirements but exceeded precision and stability expectations. The implementation of hybrid sensors, a high-performance controller like the ESP32, and a professional mechanical chassis were determining factors in the project's success.
 
-Más allá de su participación en la competencia, este robot representa una sólida base técnica para el desarrollo de futuras plataformas de navegación autónoma en entornos dinámicos.
-
----
-
-## 👥 Equipo de Desarrollo
-
-**Autor:** JO SLD  
-**Año:** 2025  
-**Colaboradores:** *Keiner Duran, Jose Lapeira, Mauricio Sanchez*
+Beyond its competition participation, this robot represents a solid technical foundation for developing future autonomous navigation platforms in dynamic environments.
 
 ---
+
+## 👥 Development Team
+
+**Author:** JO SLD  
+**Year:** 2025  
+**Collaborators:** *Keiner Duran, Jose Lapeira, Mauricio Sanchez*
