@@ -117,6 +117,22 @@ Our robot is built with precision hardware to ensure stability, responsiveness, 
     <em>Specifications:</em> 4.8-6V, 180° rotation, 1.8kg/cm torque</td>
   </tr>
 
+<tr>
+  <td><strong>HC-SR04 Ultrasonic Sensor</strong></td>
+  <td><img src="https://cdn.sparkfun.com/assets/learn_tutorials/3/1/0/ultrasound.jpg" width="120" alt="HC-SR04 Ultrasonic Sensor"></td>
+  <td>Non-contact distance measurement using ultrasonic waves.<br>
+  <em>Specifications:</em> 
+  <ul>
+    <li>Measuring range: 2cm - 400cm</li>
+    <li>Accuracy: ±3mm</li>
+    <li>Operating voltage: 5V DC</li>
+    <li>Current consumption: 15mA</li>
+    <li>Frequency: 40kHz</li>
+    <li>Detection angle: 15°</li>
+  </ul>
+  ESP32 connection: Trig (GPIO), Echo (GPIO), VCC (5V), GND</td>
+</tr>
+
   <tr>
     <td><strong>Pixy2 Camera</strong></td>
     <td><img src="https://m.media-amazon.com/images/I/71ciGcchSaL.jpg" width="120" alt="Pixy2 Camera"></td>
