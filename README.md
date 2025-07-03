@@ -119,7 +119,7 @@ Our robot is built with precision hardware to ensure stability, responsiveness, 
 
 <tr>
   <td><strong>HC-SR04 Ultrasonic Sensor</strong></td>
-  <td><img src="https://cdn.sparkfun.com/assets/learn_tutorials/3/1/0/ultrasound.jpg" width="120" alt="HC-SR04 Ultrasonic Sensor"></td>
+  <td><img src="https://www.hwlibre.com/wp-content/uploads/2019/08/hc-sr04.jpg" width="120" alt="HC-SR04 Ultrasonic Sensor"></td>
   <td>Non-contact distance measurement using ultrasonic waves.<br>
   <em>Specifications:</em> 
   <ul>
