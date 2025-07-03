@@ -129,7 +129,7 @@ Nuestro robot está construido con hardware de precisión para garantizar estabi
 
   <tr>
   <td><strong>Sensor Ultrasónico HC-SR04</strong></td>
-  <td><img src="https://cdn.sparkfun.com/assets/learn_tutorials/3/1/0/ultrasound.jpg" width="120" alt="HC-SR04 Ultrasonic Sensor"></td>
+  <td><img src="https://www.hwlibre.com/wp-content/uploads/2019/08/hc-sr04.jpg" width="120" alt="HC-SR04 Ultrasonic Sensor"></td>
   <td>Medición de distancia sin contacto mediante ondas ultrasónicas.<br>
   <em>Especificaciones:</em> 
   <ul>
