@@ -128,6 +128,22 @@ Nuestro robot está construido con hardware de precisión para garantizar estabi
   </tr>
 
   <tr>
+  <td><strong>Sensor Ultrasónico HC-SR04</strong></td>
+  <td><img src="https://cdn.sparkfun.com/assets/learn_tutorials/3/1/0/ultrasound.jpg" width="120" alt="HC-SR04 Ultrasonic Sensor"></td>
+  <td>Medición de distancia sin contacto mediante ondas ultrasónicas.<br>
+  <em>Especificaciones:</em> 
+  <ul>
+    <li>Rango de medición: 2cm - 400cm</li>
+    <li>Precisión: ±3mm</li>
+    <li>Voltaje de operación: 5V DC</li>
+    <li>Corriente: 15mA</li>
+    <li>Frecuencia: 40kHz</li>
+    <li>Ángulo de detección: 15°</li>
+  </ul>
+  Conexión ESP32: Trig (GPIO), Echo (GPIO), VCC (5V), GND</td>
+</tr>
+
+  <tr>
     <td><strong>Pixy2 Camera</strong></td>
     <td><img src="https://m.media-amazon.com/images/I/71ciGcchSaL.jpg" width="120" alt="Pixy2 Camera"></td>
     <td>Sistema de visión artificial para detección de objetos por color.<br>
